@@ -46,11 +46,12 @@ public class CaseKaroTest {
             page.waitForTimeout(3000);
 
             // STEP 5 - Choose options
-            page.locator("#CardLink-template--17532658516086__product-grid-7644699951222").first().click();
+            page.locator("#CardLink-template--19067879227510__product-grid-7644699951222").first().click();
+
 
             page.waitForTimeout(3000);
 
-            String addToCartBtn = "#ProductSubmitButton-template--17532659400822__main";
+            String addToCartBtn = "#ProductSubmitButton-template--19067880243318__main";
             String closeDrawerBtn = "#CartDrawer > div.drawer__inner.gradient.color-scheme-1 > div.drawer__header > button";
 
             // -------- HARD CASE --------
@@ -64,7 +65,7 @@ public class CaseKaroTest {
             // -------- SOFT CASE --------
             addCase(
                     page,
-                    "#variant-selects-template--17532659400822__main > fieldset > label:nth-child(11)",
+                    "#variant-selects-template--19067880243318__main > fieldset > label:nth-child(11)",
                     addToCartBtn,
                     closeDrawerBtn,
                     "Soft"
@@ -73,7 +74,7 @@ public class CaseKaroTest {
             // -------- GLASS CASE --------
             addCase(
                     page,
-                    "#variant-selects-template--17532659400822__main > fieldset > label:nth-child(9)",
+                    "#variant-selects-template--19067880243318__main > fieldset > label:nth-child(9)",
                     addToCartBtn,
                     closeDrawerBtn,
                     "Glass"
@@ -94,13 +95,13 @@ public class CaseKaroTest {
             } else {
                 System.out.println("Validation Failed");
             }
-
             // STEP 8 - Print product details
             for (int i = 0; i < items; i++) {
 
                 String product = page.locator(".cart-item__name").nth(i).textContent();
-
+                String price = page.locator(".cart-item__price-wrapper span").nth(i).textContent().trim();
                 System.out.println("Product: " + product);
+                System.out.println("Price: " +price);
                 System.out.println("Link: " + page.url());
                 System.out.println("------------------------------");
             }
